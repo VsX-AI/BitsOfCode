@@ -63,12 +63,12 @@ class ZergAgent(base_agent.BaseAgent):
       return actions.FUNCTIONS.select_point("select_all_type", (larva.x,
                                                                 larva.y))
     spawning_pools = self.get_units_by_type(obs, units.Zerg.SpawningPool)
-      if len(spawning_pools) == 0:
-        if self.unit_type_is_selected(obs, units.Zerg.Drone):
-          if self.can_do(obs, actions.FUNCTIONS.Build_SpawningPool_screen.id):
-            x = random.randint(0, 83)
-            y = random.randint(0, 83)
-            return actions.FUNCTIONS.Build_SpawningPool_screen("now", (x, y))
+    if len(spawning_pools) == 0:
+      if self.unit_type_is_selected(obs, units.Zerg.Drone):
+        if self.can_do(obs, actions.FUNCTIONS.Build_SpawningPool_screen.id):
+          x = random.randint(0, 83)
+          y = random.randint(0, 83)
+          return actions.FUNCTIONS.Build_SpawningPool_screen("now", (x, y))
     
         drones = self.get_units_by_type(obs, units.Zerg.Drone)
         if len(drones) > 0:
@@ -76,7 +76,7 @@ class ZergAgent(base_agent.BaseAgent):
           return actions.FUNCTIONS.select_point("select_all_type", (drone.x,
                                                                     drone.y))
 
-  return actions.FUNCTIONS.no_op()
+    return actions.FUNCTIONS.no_op()
 
 
 def main(unused_argv):
